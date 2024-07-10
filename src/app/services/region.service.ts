@@ -9,7 +9,7 @@ export class RegionService {
 
   constructor(private http:HttpClient) { }
 
-  dameListaSucursales(){
+  dameListaRegiones(){
     //return this.http.get('http://ec2-54-153-58-93.us-west-1.compute.amazonaws.com:3005/regiones');
     return this.http.get(environment.baseUrl+':'+environment.puertoApiAdmonCatalogos+environment.regiones);
 
