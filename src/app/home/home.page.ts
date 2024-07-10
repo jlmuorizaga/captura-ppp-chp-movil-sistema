@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonButtons, IonMenu, IonMenuButton, IonButton } from '@ionic/angular/standalone';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonButtons, 
+  IonMenu, IonMenuButton, IonButton } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-home',

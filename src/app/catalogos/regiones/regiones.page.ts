@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonButton, IonIcon, IonBackButton, IonList, 
@@ -7,6 +7,7 @@ import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonButton, Ion
 import { SharedModule } from 'src/app/shared/shared/shared.module';
 import { Region } from 'src/app/model/dto/region';
 import { RegionService } from 'src/app/services/region.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-regiones',
@@ -18,8 +19,12 @@ import { RegionService } from 'src/app/services/region.service';
 })
 export class RegionesPage implements OnInit {
   regiones!:Region[];
+  mensaje: string;
 
-  constructor(private regionesSvc:RegionService,private alertController:AlertController) { }
+  constructor(private regionesSvc:RegionService,private alertController:AlertController,
+    private router: Router,private cdr: ChangeDetectorRef ) { 
+      this.mensaje = 'Estoy en el constructor';
+    }
 
   ngOnInit() {
     this.leerRegiones();
@@ -31,6 +36,7 @@ export class RegionesPage implements OnInit {
         console.log('Servicio leido de forma exitosa')
         console.log(res);
         this.regiones=res;
+        this.cdr.detectChanges();
 
       },
       error:(error:any)=>{
@@ -85,4 +91,8 @@ export class RegionesPage implements OnInit {
     await alert.present();
 
   }
+
+  saltaAInsertarRegion() {
+    this.router.navigateByUrl('/insertar-region');
+  }  
 }

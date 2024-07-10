@@ -18,4 +18,9 @@ export const routes: Routes = [
     path: 'productos',
     loadComponent: () => import('./catalogos/productos/productos.page').then( m => m.ProductosPage)
   },
+  {
+    path: 'insertar-region',
+    loadComponent: () => import('./catalogos/regiones/insertar-region/insertar-region.page').then( m => m.InsertarRegionPage)
+  },
+
 ];

@@ -13,8 +13,8 @@
       <ion-title size="large">regiones</ion-title>
     </ion-toolbar>
   </ion-header>
-  <p style="text-align: center">
-    <ion-button color="success">Insertar Región</ion-button>
+  <p style="text-align: center">    
+    <ion-button (click)="saltaAInsertarRegion()" color="success">Insertar Región</ion-button>
   </p>
   <ion-list>
     @if (regiones) {
