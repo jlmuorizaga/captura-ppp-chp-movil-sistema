@@ -26,7 +26,7 @@ export class RegionesPage implements OnInit {
   }
 
   leerRegiones(){
-    this.regionesSvc.dameListaSucursales().subscribe({
+    this.regionesSvc.dameListaRegiones().subscribe({
       next:(res:any)=>{
         console.log('Servicio leido de forma exitosa')
         console.log(res);

@@ -3,7 +3,7 @@
     <ion-title>regiones</ion-title>
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
-  </ion-buttons>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -13,17 +13,21 @@
       <ion-title size="large">regiones</ion-title>
     </ion-toolbar>
   </ion-header>
+  <div text-center>
+    <ion-button color="success">Insertar Región</ion-button>
+  </div>
   <ion-list>
     @if (regiones) {
-      @for (region of regiones; track $index) {
-        <ion-item>
-          <ion-label>{{region.nombre}}</ion-label>
-          <ion-button (click)="confirmaBorrar(region)">Borrar</ion-button> <br>
-        </ion-item>
-      }
+    @for (region of regiones; track $index) {
+    <ion-item>
+      <ion-label>{{region.nombre}}</ion-label>
+      <ion-button (click)="confirmaBorrar(region)" color="danger">Borrar</ion-button>
+      <ion-button>Editar</ion-button> <br>
+    </ion-item>
+    }
 
     }
- 
-  
+
+
   </ion-list>
 </ion-content>
