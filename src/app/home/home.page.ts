@@ -34,4 +34,9 @@ export class HomePage {
     this.router.navigateByUrl('/productos');
 
   }
+
+  saltaAEspecialidades() {
+    this.router.navigateByUrl('/especialidades');
+
+  }
 }

@@ -1,7 +1,8 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonButton, IonIcon, IonBackButton, IonList, 
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons,
+   IonButton, IonIcon, IonBackButton, IonList, 
   IonLabel, IonItem, 
   AlertController} from '@ionic/angular/standalone';
 import { SharedModule } from 'src/app/shared/shared/shared.module';
@@ -14,14 +15,16 @@ import { Router } from '@angular/router';
   templateUrl: './regiones.page.html',
   styleUrls: ['./regiones.page.scss'],
   standalone: true,
-  imports: [SharedModule,IonItem, IonLabel, IonList, IonBackButton, IonIcon, IonButton, IonButtons, IonContent, 
+  imports: [SharedModule,IonItem, IonLabel, IonList, 
+    IonBackButton, IonIcon, IonButton, IonButtons, IonContent, 
     IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
 })
 export class RegionesPage implements OnInit {
   regiones!:Region[];
   mensaje: string;
 
-  constructor(private regionesSvc:RegionService,private alertController:AlertController,
+  constructor(private regionesSvc:RegionService,
+    private alertController:AlertController,
     private router: Router,private cdr: ChangeDetectorRef ) { 
       this.mensaje = 'Estoy en el constructor';
     }

@@ -22,5 +22,9 @@ export const routes: Routes = [
     path: 'insertar-region',
     loadComponent: () => import('./catalogos/regiones/insertar-region/insertar-region.page').then( m => m.InsertarRegionPage)
   },
+  {
+    path: 'especialidades',
+    loadComponent: () => import('./catalogos/especialidades/especialidades.page').then( m => m.EspecialidadesPage)
+  },
 
 ];
