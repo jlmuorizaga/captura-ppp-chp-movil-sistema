@@ -1,0 +1,34 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>insertar-regiones</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <form [formGroup]="formularioRegion" (ngSubmit)="insertaRegion()">
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="6">
+        <ion-input label="ID" label-placement="floating" fill="outline" formControlName="idRegion"></ion-input>
+      </ion-col>
+      <ion-col size="6">
+        <ion-input label="Nombre Región" label-placement="floating" fill="outline"
+        formControlName="nombreRegion"></ion-input>
+        <!--ion-item *ngIf="formularioRegion.get('nombreRegion')?.invalid && formularioRegion.get('email')?.touched">
+          <ion-note color="danger">Enter a valid email</ion-note>
+        </ion-item-->
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-button type="submit" [disabled]="!formularioRegion.valid">
+          Inserta Región
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  </form>
+</ion-content>

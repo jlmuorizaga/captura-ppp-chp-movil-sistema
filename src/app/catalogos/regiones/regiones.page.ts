@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons,
@@ -8,7 +8,9 @@ import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons,
 import { SharedModule } from 'src/app/shared/shared/shared.module';
 import { Region } from 'src/app/model/dto/region';
 import { RegionService } from 'src/app/services/region.service';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import {filter} from 'rxjs/operators';
 
 @Component({
   selector: 'app-regiones',
@@ -19,7 +21,8 @@ import { Router } from '@angular/router';
     IonBackButton, IonIcon, IonButton, IonButtons, IonContent, 
     IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
 })
-export class RegionesPage implements OnInit {
+export class RegionesPage implements OnInit,OnDestroy {
+  navigationSubscription: Subscription;
   regiones!:Region[];
   mensaje: string;
 
@@ -27,10 +30,23 @@ export class RegionesPage implements OnInit {
     private alertController:AlertController,
     private router: Router,private cdr: ChangeDetectorRef ) { 
       this.mensaje = 'Estoy en el constructor';
+
+      this.navigationSubscription = this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe(() => {
+        this.leerRegiones();
+      });
     }
 
   ngOnInit() {
-    this.leerRegiones();
+    console.log('Entré a regiones en OnInit');
+   // this.leerRegiones();
+  }
+
+  ngOnDestroy(): void {
+    if (this.navigationSubscription) {
+      this.navigationSubscription.unsubscribe();
+    }
   }
 
   leerRegiones(){
@@ -39,6 +55,12 @@ export class RegionesPage implements OnInit {
         console.log('Servicio leido de forma exitosa')
         console.log(res);
         this.regiones=res;
+        
+        for(let region of this.regiones){
+          region.hola='Hola';
+        }
+        console.log(this.regiones);
+        this.regiones 
         this.cdr.detectChanges();
 
       },
@@ -71,7 +93,7 @@ export class RegionesPage implements OnInit {
   async confirmaBorrar(region:Region){
     const alert = await this.alertController.create({
       header: 'Confirmación',
-      message: '¿Estás seguro de que deseas borrar la región '+region.nombre+' ?',
+      message: '¿Estás seguro de que deseas borrar la región '+region.nombreRegion+' ?',
       buttons: [
         {
           text: 'Cancelar',
@@ -84,7 +106,7 @@ export class RegionesPage implements OnInit {
           text: 'Aceptar',
           handler: () => {
             console.log('Operación confirmada');
-            this.borraRegion(region.id);
+            this.borraRegion(region.idRegion);
             // Aquí puedes agregar la lógica para la operación a realizar
           }
         }

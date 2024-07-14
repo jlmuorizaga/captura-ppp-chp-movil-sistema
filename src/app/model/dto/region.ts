@@ -1,4 +1,5 @@
-export class Region{
-    id!:string;
-    nombre!:string;
+export class Region {
+    idRegion!: string;
+    nombreRegion!: string;
+    hola!: string;
 }

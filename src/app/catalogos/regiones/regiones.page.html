@@ -20,7 +20,12 @@
     @if (regiones) {
     @for (region of regiones; track $index) {
     <ion-item>
-      <ion-label>{{region.nombre}}</ion-label>
+      <ion-label>
+        {{region.idRegion}}
+      </ion-label>  
+      <ion-label>
+        {{region.nombreRegion}}
+      </ion-label>  
       <ion-button (click)="confirmaBorrar(region)" color="danger">Borrar</ion-button>
       <ion-button>Editar</ion-button> <br>
     </ion-item>
