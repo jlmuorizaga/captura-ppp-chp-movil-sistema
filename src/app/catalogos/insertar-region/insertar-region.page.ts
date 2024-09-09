@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { IonicModule} from '@ionic/angular'
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule }
   from '@angular/forms';
-import {IonHeader, IonButton, IonInput,IonToolbar,IonTitle,IonButtons,IonBackButton,IonGrid,IonRow,IonCol} from '@ionic/angular/standalone'
+import {IonHeader, IonButton, IonInput,IonToolbar,IonTitle,IonButtons,
+  IonBackButton,IonGrid,IonRow,IonCol} from '@ionic/angular/standalone'
 import { Region } from 'src/app/model/dto/region';
 import { RegionService } from 'src/app/services/region.service';
 import { Router } from '@angular/router';

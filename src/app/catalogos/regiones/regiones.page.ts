@@ -1,9 +1,9 @@
-import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit } 
+from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons,
-   IonButton, IonIcon, IonBackButton, IonList, 
-  IonLabel, IonItem, 
+   IonButton, IonIcon, IonBackButton, IonList, IonLabel, IonItem, 
   AlertController} from '@ionic/angular/standalone';
 import { SharedModule } from 'src/app/shared/shared/shared.module';
 import { Region } from 'src/app/model/dto/region';
